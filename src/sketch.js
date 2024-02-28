@@ -21,11 +21,8 @@ function draw() {
     scale(s);
   if (s <= 1) {
     s = s + 0.01;
-    drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
     }
-  }
-  if (s >= 1) {
-    drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
+  drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
   }
 }
 
