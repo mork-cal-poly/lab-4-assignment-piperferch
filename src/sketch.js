@@ -1,3 +1,6 @@
+let clicked = false;
+let foxY = 0;
+
 function setup() {
   // These lines are fitting our canvas
   // where we want in the DOM
@@ -9,6 +12,15 @@ function setup() {
 
 function draw() {
   drawBunny(0, 0, "pink", "rgb(248,134,154)", 255, 0, 255);
+  if (clicked) {
+    drawFoxy(340);
+}
+  if (foxY >= 225) {
+    push();
+    rotate(PI/4 + PI/2);
+    drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
+    pop();
+  }
 }
 
 function drawBackground(x, y, r, g, b) {
@@ -117,4 +129,88 @@ function drawBunny(x, y, bodyColor, headColor, r, g, b) {
   
   pop();
   
+}
+
+function drawFoxy(x) {
+  push();
+  translate(x, foxY);  
+  scale(0.75);
+  
+  fill("rgb(219,143,3)");
+  
+  // arms
+  push();
+  rotate(PI/4);
+  ellipse(-40, 30, 15, 140);
+  pop();
+  
+  push();
+  rotate(7*PI/4);
+  ellipse(40, 30, 15, 140);
+  pop();
+  
+  // tail
+  push();
+  rotate(PI/4);
+  ellipse(20, 60, 30, 120);
+  fill("white");
+  arc(19, 100, 26, 40, 0, PI + PI/5, PIE);
+  pop();
+  
+  // legs and body
+  rect(-30, 50, 15, 160);
+  rect(15, 50, 15, 160);
+  rect(-35, -60, 70, 140, 30);
+  
+  // belly
+  fill("rgba(255,228,179,0.81)");
+  rect(-25, -40, 50, 100, 30);
+  
+  fill("rgb(219,143,3)");
+  
+  // ears
+  triangle(-32, -100, -10, -118, -35, -125);
+  triangle(32, -100, 10, -118, 35, -125);
+  
+  // nose
+  triangle(-20, -80, 20, -80, 0, -60);
+  fill("black");
+  ellipse(0, -60, 7);
+  
+  // head shape
+  noStroke();
+  fill("rgb(219,143,3)");
+  ellipse(0, -100, 65, 55);
+
+  // eyes
+  fill("white");
+  ellipse(-15, -95, 9);
+  ellipse(15, -95, 9);
+  fill("black");
+  ellipse(-15, -95, 6);
+  ellipse(15, -95, 6);
+
+  // whiskers
+  stroke("black");
+  line(-30, -75, -5, -65);
+  line(30, -75, 5, -65);
+  line(-33, -60, -5, -62);
+  line(33, -60, 5, -62);
+  
+  pop();
+
+  if (foxY <= 250) {
+    foxY = foxY + 5;
+  }
+}
+
+
+function mouseClicked() {
+  if (mouseX < 250 &&
+      mouseX > 100 && 
+      mouseY > 175 && 
+      mouseY < 300) {
+    clicked = !clicked;
+    foxY = 0;
+  }
 }
