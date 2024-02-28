@@ -1,5 +1,6 @@
 let clicked = false;
 let foxY = 0;
+let s = 0;
 
 function setup() {
   // These lines are fitting our canvas
@@ -17,9 +18,14 @@ function draw() {
 }
   if (foxY >= 225) {
     push();
-    rotate(PI/4 + PI/2);
+    scale(s);
+  if (s <= 1) {
+    s = s + 0.01;
     drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
-    pop();
+    }
+  }
+  if (s >= 1) {
+    drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
   }
 }
 
@@ -212,5 +218,6 @@ function mouseClicked() {
       mouseY < 300) {
     clicked = !clicked;
     foxY = 0;
+    s = 0;
   }
 }
