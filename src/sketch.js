@@ -13,6 +13,7 @@ function setup() {
 
 function draw() {
   drawBunny(0, 0, "pink", "rgb(248,134,154)", 255, 0, 255);
+  drawPanda(50, 350, .3);
   if (clicked) {
     drawFoxy(340);
 }
@@ -24,6 +25,44 @@ function draw() {
     }
   drawBunny(0, 0, "orange","rgb(187,132,31)", 255, 255, 0);
   }
+}
+
+function drawPanda(x, y, s){
+  //creature 
+  push();
+   
+     translate(x, y);
+     scale(s);
+ // nose
+   fill(255, 195, 210);
+   stroke(255, 160, 160);
+ arc(-155, 85, 25, 25, PI/2, 3*PI/2, PIE);
+ // little ear
+ arc(-130, 35, 35, 35, PI/2, 0, PIE);
+ // head
+   fill(255, 195, 210);
+ ellipse(-90, 90, 130);
+ // big ear
+   fill(255, 195, 210);
+ ellipse(-65, 30, 55);
+ // eye
+ arc(-115, 80, 35, 35, PI, 0, PIE);
+ // left foot
+ arc(50, 162, 50, 50, PI, 0, PIE);
+ //body
+   fill(255, 195, 210);
+ rect(-25, 25, 50, 125);
+ ellipse(75, 67, 100, 175);
+ //tail
+   fill(255, 195, 210);
+ arc(100, 0, 50, 50, 5*PI/4, PI/4);
+ //leg
+ triangle(125, 175, 125, 95, 100, 150);
+ // right foot
+ arc(100, 175, 50, 50, PI, 0, PIE);
+ 
+
+  pop();
 }
 
 function drawBackground(x, y, r, g, b) {
